@@ -1,0 +1,32 @@
+server:
+  address: 0.0.0.0
+  port: 8080
+  compression:
+    enabled: true
+logging:
+  level:
+    com.netcracker: debug
+    org.apache.: info
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+
+spring:
+  datasource:
+    url: ${postgres.datasource.url}
+    username: ${postgres.datasource.username}
+    password: ${postgres.datasource.password}
+    driver-class-name: ${postgres.datasource.driver-class-name}
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+postgres:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pixonic_game_api_db
+    username: pixonic_game_api_user
+    password: password
+    driver-class-name: org.postgresql.Driver
+#    --------------------------------------
