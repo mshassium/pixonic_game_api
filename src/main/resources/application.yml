@@ -21,12 +21,17 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
 
 postgres:
   datasource:
-    url: jdbc:postgresql://localhost:5432/pixonic_game_api_db
-    username: pixonic_game_api_user
-    password: password
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: main_db
     driver-class-name: org.postgresql.Driver
 #    --------------------------------------
