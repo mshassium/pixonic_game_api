@@ -23,7 +23,7 @@ public class UserService {
         this.crudUserRepository = crudUserRepository;
     }
 
-    public int createUpdateUser(User newUser) {
+    public int createUser(User newUser) {
         log.debug("Execute createUpdateUser method");
 
         return userRepository.saveShardingUser(newUser);

@@ -25,10 +25,10 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity createUpdateUser(@RequestBody User user) {
+    public ResponseEntity createUser(@RequestBody User user) {
         log.debug("Execute createUpdateUser");
         try {
-            int userId = userService.createUpdateUser(user);
+            int userId = userService.createUser(user);
             return ResponseEntity.ok(userId);
         } catch (RuntimeException e) {
             log.error("User can not create because: {}", e.getMessage());
