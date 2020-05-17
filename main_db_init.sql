@@ -125,8 +125,7 @@ create
 rule new_insert_to_shard_2 as on
 insert to user_table
 where (gold
-    > 1000
-  and gold <= 2000)
+    > 1000)
     do instead
 insert into user_table_2
 values (new.*);
