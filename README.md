@@ -41,15 +41,18 @@ need to finish the following:
 2) add service discovery
 
 #### Business logic
-It is very simple :)
+It is very simple 😄
 1) Create Entity (data model for user, stock, etc...)
 2) Create Repository (CRUDRepository and 1 more custom repository
 just for correct store new user via sharding dbs)
-3) Create Services (most interesting services is GameService ;) )
+3) Create Services (most interesting services is GameService 😅 )
 4) Create RestControllers
 5) Little bit logs
 6) Add Swagger config and UI (i like this tool for documentation and easy test)
 7) Profit!!!
+
+### Tests
+will appear soon 😆
 
 ### Any questions
 1) telegram: @rail_khamitov
