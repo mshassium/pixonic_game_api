@@ -24,9 +24,15 @@ public class UserService {
     }
 
     public int createUser(User newUser) {
-        log.debug("Execute createUpdateUser method");
+        log.debug("Execute createUser method");
 
         return userRepository.saveShardingUser(newUser);
+    }
+
+    public User updateUser(User newUser) {
+        log.debug("Execute createUpdateUser method");
+
+        return crudUserRepository.save(newUser);
     }
 
     public void deleteUser(User user) {

@@ -38,8 +38,8 @@ public class GameService {
                         userTo.getInventory().addNewItem(gift);
                         userFrom.getInventory().removeItem(gift);
                     });
-            userService.createUpdateUser(userTo);
-            userService.createUpdateUser(userFrom);
+            userService.updateUser(userTo);
+            userService.updateUser(userFrom);
         } else {
             throw new RuntimeException("No Active Stocks or the user does not have the desired item");
         }
