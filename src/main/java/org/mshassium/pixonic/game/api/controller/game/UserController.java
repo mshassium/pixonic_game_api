@@ -5,7 +5,6 @@ import org.mshassium.pixonic.game.api.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,8 +28,8 @@ public class UserController {
     public ResponseEntity createUpdateUser(@RequestBody User user) {
         log.debug("Execute createUpdateUser");
         try {
-            User userWithId = userService.createUpdateUser(user);
-            return ResponseEntity.ok(userWithId);
+            int userId = userService.createUpdateUser(user);
+            return ResponseEntity.ok(userId);
         } catch (RuntimeException e) {
             log.error("User can not create because: {}", e.getMessage());
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -61,7 +60,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping
+    //    @DeleteMapping
     public ResponseEntity deleteUser(@RequestBody User user) {
         log.debug("Execute deleteUser");
         try {

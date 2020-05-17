@@ -1,5 +1,6 @@
 package org.mshassium.pixonic.game.api.db.model;
 
+import org.hibernate.annotations.Immutable;
 import org.mshassium.pixonic.game.api.Constants;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,7 @@ import javax.persistence.Table;
 
 @Table(name = "user_table")
 @Entity
+@Immutable
 public class User {
 
     @Id

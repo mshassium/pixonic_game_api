@@ -1,6 +1,6 @@
 server:
   address: 0.0.0.0
-  port: 8080
+  port: 8081
   compression:
     enabled: true
 logging:
@@ -21,7 +21,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     properties:
       hibernate:
         jdbc:
@@ -30,8 +30,10 @@ spring:
 
 postgres:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://${db.host}:5432/postgres
     username: postgres
     password: main_db
     driver-class-name: org.postgresql.Driver
+db:
+  host: main_db
 #    --------------------------------------
