@@ -1,4 +1,4 @@
-package org.mshassium.pixonic.game.api.controller;
+package org.mshassium.pixonic.game.api.controller.game;
 
 import org.mshassium.pixonic.game.api.db.model.Stock;
 import org.mshassium.pixonic.game.api.service.StockService;

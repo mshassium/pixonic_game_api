@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -61,5 +61,11 @@ public class Stock {
 
     public void setAvailableActions(Set<Action> availableActions) {
         this.availableActions = availableActions;
+    }
+
+    public boolean isActive() {
+        long currentTime = new Date().getTime();
+        return getEndDate().getTime() > currentTime
+                && getStartDate().getTime() < currentTime;
     }
 }

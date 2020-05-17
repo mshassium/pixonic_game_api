@@ -1,5 +1,6 @@
 package org.mshassium.pixonic.game.api.service;
 
+import org.mshassium.pixonic.game.api.Constants;
 import org.mshassium.pixonic.game.api.db.model.Stock;
 import org.mshassium.pixonic.game.api.db.model.User;
 import org.mshassium.pixonic.game.api.db.repository.StockRepository;
@@ -7,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,17 +22,19 @@ public class GameService {
         this.userService = userService;
     }
 
-    public void makeGift(String from, String to) {
+    public void makeValentineGift(String from, String to) {
+        log.debug("Execute makeGift method");
         User userFrom = userService.getUserById(from);
         User userTo = userService.getUserById(to);
-        if (stockIsActive() && userHaveGift(userFrom)) {
+        if (makeGiftStockIsActive() && userFrom.haveValentineGift()) {
             userFrom
                     .getInventory()
                     .getItems()
                     .stream()
-                    .filter(item -> item.getType().equals("gift"))
+                    .filter(item -> item.getType().equals(Constants.GIFT))
                     .findFirst()
                     .ifPresent(gift -> {
+                        log.debug("Make a gift from user with Id: {} to user with id: {}", from, to);
                         userTo.getInventory().addNewItem(gift);
                         userFrom.getInventory().removeItem(gift);
                     });
@@ -44,22 +46,17 @@ public class GameService {
 
     }
 
-    private boolean userHaveGift(User from) {
-        return from.getInventory().getItems().stream().anyMatch(item -> item.getType().equals("gift"));
-    }
-
-    private boolean stockIsActive() {
+    private boolean makeGiftStockIsActive() {
         List<Stock> allStock = (List<Stock>) stockRepository.findAll();
-        Date currentDate = new Date();
+        log.debug("Count all stock: {}", allStock);
         return allStock
                 .stream()
-                .filter(it -> it.getEndDate().getTime() > currentDate.getTime()
-                        && it.getStartDate().getTime() < currentDate.getTime())
+                .filter(Stock::isActive)
                 .anyMatch(nextStock -> nextStock
                         .getAvailableActions()
                         .stream()
                         .anyMatch(nextAction -> nextAction
-                                .getActionName().equals("make_gift")));
+                                .getActionName().equals(Constants.MAKE_GIFT)));
     }
 
 

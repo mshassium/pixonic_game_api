@@ -1,4 +1,4 @@
-package org.mshassium.pixonic.game.api.controller;
+package org.mshassium.pixonic.game.api.controller.game;
 
 import org.mshassium.pixonic.game.api.db.model.User;
 import org.mshassium.pixonic.game.api.service.UserService;
@@ -49,7 +49,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/gifts")
+    @GetMapping("/valentineGifts")
     public ResponseEntity getAllUsersWithValentineGifts() {
         log.debug("Execute getAllUsersWithValentineGifts");
         try {

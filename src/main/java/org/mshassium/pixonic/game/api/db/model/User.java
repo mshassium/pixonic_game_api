@@ -1,5 +1,7 @@
 package org.mshassium.pixonic.game.api.db.model;
 
+import org.mshassium.pixonic.game.api.Constants;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,5 +49,22 @@ public class User {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+
+    public boolean haveGift() {
+        return getInventory()
+                .getItems()
+                .stream()
+                .anyMatch(item -> item
+                        .getType().equals(Constants.GIFT));
+    }
+
+    public boolean haveValentineGift() {
+        return getInventory()
+                .getItems()
+                .stream()
+                .anyMatch(item ->
+                        item.getType().equals(Constants.GIFT)
+                        && item.getName().equals(Constants.VALENTINE));
     }
 }

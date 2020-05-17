@@ -1,4 +1,4 @@
-package org.mshassium.pixonic.game.api.controller;
+package org.mshassium.pixonic.game.api.controller.game;
 
 import org.mshassium.pixonic.game.api.service.GameService;
 import org.slf4j.Logger;
@@ -19,11 +19,11 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("/makeGift")
-    public ResponseEntity makeGift(@RequestParam(value = "from", required = true) String userFromId,
-                                   @RequestParam(value = "to", required = true) String userToId) {
+    @GetMapping("/makeValentineGift")
+    public ResponseEntity makeValentineGift(@RequestParam(value = "from", required = true) String userFromId,
+                                            @RequestParam(value = "to", required = true) String userToId) {
         try {
-            gameService.makeGift(userFromId, userToId);
+            gameService.makeValentineGift(userFromId, userToId);
             return ResponseEntity.ok().build();
         } catch (RuntimeException e) {
             log.error(e.getMessage());

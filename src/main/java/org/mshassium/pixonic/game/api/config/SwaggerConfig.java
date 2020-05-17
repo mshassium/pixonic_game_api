@@ -17,7 +17,7 @@ public class SwaggerConfig {
     public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(basePackage("org.mshassium.pixonic.game.api.controller"))
+                .apis(basePackage("org.mshassium.pixonic.game.api.controller.game"))
                 .build()
                 .useDefaultResponseMessages(false)
                 .apiInfo(getApiInfo());
@@ -25,7 +25,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo getApiInfo() {
-        return new ApiInfoBuilder().title("Paxonic Game Back End REST API")
+        return new ApiInfoBuilder().title("Pixonic Game Back End REST API")
                 .description("This API allows to perform all operations related to Pixonic Game Back End")
                 .version("1.0")
                 .build();

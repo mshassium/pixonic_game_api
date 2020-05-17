@@ -37,13 +37,8 @@ public class UserService {
 
     public List<User> getAllUserWithValentineGift() {
         log.debug("Execute getAllUserWithValentineGift");
-        return StreamSupport.stream(userRepository.findAll().spliterator(), false).
-                filter(user -> user
-                        .getInventory()
-                        .getItems()
-                        .stream()
-                        .anyMatch(item -> item
-                                .getType().equals("gift")))
+        return StreamSupport.stream(userRepository.findAll().spliterator(), false)
+                .filter(User::haveGift)
                 .collect(Collectors.toList());
     }
 
