@@ -33,6 +33,15 @@ if gold value >=0 and <=1000 then our data store to shard1_db instance,
 else store to shard2_db 
 ``
 
+##### Main db schema
+where: 
+1) `user_table_1` and `user_table_2` is our shard.
+2) `user_table` view for collect all users data from other db instances
+![](./images/main_db.png?raw=true)
+
+##### Sharding db schema
+![](./images/shard_db.png?raw=true)
+
 #### Scaling
 For support this point i use docker compose tool. 
 But this does not completely cover the scaling problem.
